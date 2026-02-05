@@ -1,4 +1,4 @@
-from .User import User
+from .user import User
 
 class Admin(User):
     def __init__(self, personnel_id, address):
