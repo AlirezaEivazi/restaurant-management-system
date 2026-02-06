@@ -1,19 +1,20 @@
-from .user import User
+from backend.models.user import User
+
 
 class Admin(User):
-    def __init__(self, personnel_id, address):
-        super().__init__("admin", "021-12345678", "admin@restaurant.com", "admin123")
+    """
+    Admin user entity.
+    Admin logs in with personnel_id + password.
+    """
+
+    def __init__(self, first_name: str, last_name: str, phone: str, email: str,
+                 personnel_id: str, password: str):
+        super().__init__(first_name, last_name, phone, email, password)
         self._personnel_id = personnel_id
-        self._address = address
 
     @property
-    def personnel_id(self): return self._personnel_id
-    @personnel_id.setter
-    def personnel_id(self, value): self._personnel_id = value
+    def personnel_id(self) -> str:
+        return self._personnel_id
 
-    @property
-    def address(self): return self._address
-    @address.setter
-    def address(self, value): self._address = value
-    
-    def get_role(self): return "Admin"
+    def get_role(self) -> str:
+        return "Admin"

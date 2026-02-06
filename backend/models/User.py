@@ -1,31 +1,41 @@
 from abc import ABC, abstractmethod
 
+
 class User(ABC):
-    def __init__(self, full_name, phone, email, password):
-        self._full_name = full_name
+    """
+    Abstract base class for system users.
+    """
+
+    def __init__(self, first_name: str, last_name: str, phone: str, email: str, password: str):
+        self._first_name = first_name
+        self._last_name = last_name
         self._phone = phone
         self._email = email
         self._password = password
 
     @property
-    def full_name(self): return self._full_name
-    @full_name.setter
-    def full_name(self, value): self._full_name = value
+    def first_name(self) -> str:
+        return self._first_name
 
     @property
-    def phone(self): return self._phone
-    @phone.setter
-    def phone(self, value): self._phone = value
+    def last_name(self) -> str:
+        return self._last_name
 
     @property
-    def email(self): return self._email
-    @email.setter
-    def email(self, value): self._email = value
+    def phone(self) -> str:
+        return self._phone
 
     @property
-    def password(self): return self._password
-    @password.setter
-    def password(self, value): self._password = value
+    def email(self) -> str:
+        return self._email
+
+    @property
+    def password(self) -> str:
+        return self._password
 
     @abstractmethod
-    def get_role(self): pass
+    def get_role(self) -> str:
+        """
+        Returns the role of the user (Customer/Admin).
+        """
+        pass
